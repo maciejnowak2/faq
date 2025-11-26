@@ -123,17 +123,31 @@
       padding-right: 12px;
     }
 
+    /* KÓŁKO Z PLUS/MINUS – ŚRODKOWANIE */
     .faq-toggle {
       width: 28px;
       height: 28px;
       border-radius: 50%;
       border: 1px solid var(--tbp-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
+      text-align: center;
       font-size: 18px;
+      line-height: 28px; /* idealne wyśrodkowanie w pionie */
       color: var(--tbp-blue);
       flex-shrink: 0;
+    }
+
+    .faq-toggle::before {
+      content: "+";
+    }
+
+    .faq-item.is-open .faq-toggle {
+      background: var(--tbp-blue);
+      color: #ffffff;
+    }
+
+    .faq-item.is-open .faq-toggle::before {
+      content: "–";
     }
 
     .faq-answer {
@@ -150,20 +164,7 @@
     .faq-item.is-open .faq-answer {
       padding-top: 10px;
       padding-bottom: 12px;
-      max-height: 200px; /* możesz zwiększyć jeśli masz baaardzo długie odpowiedzi */
-    }
-
-    .faq-item.is-open .faq-toggle {
-      background: var(--tbp-blue);
-      color: #ffffff;
-    }
-
-    .faq-item.is-open .faq-toggle::before {
-      content: "–";
-    }
-
-    .faq-toggle::before {
-      content: "+";
+      max-height: 350px; /* zwiększone dla dłuższych odpowiedzi */
     }
 
     /* Stan ukryty przy filtrach */
@@ -233,7 +234,7 @@
       <!-- PRAWA KOLUMNA – PYTANIA -->
       <section class="faq-items" id="faqItems">
 
-        <!-- Przykładowe pytania – możesz dowolnie edytować / dodawać kolejne -->
+        <!-- WARUNKI UMOWY TBP (10) -->
         <article class="faq-item" data-faq-cat="warunki">
           <div class="faq-question">
             <div class="faq-question-text">
@@ -242,8 +243,9 @@
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Standardowo program TBP obejmuje wynajem od 5 dozowników. W uzasadnionych przypadkach
-            możemy rozważyć inną liczbę – skontaktuj się z doradcą, aby omówić szczegóły.
+            W przypadku nowych klientów, czyli takich, z którymi nie współpracujemy w żaden sposób,
+            minimalna liczba dozowników na pierwsze zamówienie to 5 sztuk. W pozostałych przypadkach
+            możliwość podpisania umowy na mniejszą liczbę urządzeń jest rozpatrywana indywidualnie.
           </div>
         </article>
 
@@ -255,90 +257,353 @@
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Okres 36 miesięcy pozwala rozłożyć koszty i zapewnić komfortowe warunki współpracy.
-            W szczególnych przypadkach możliwe jest ustalenie innego okresu – wymaga to
-            indywidualnych ustaleń.
+            Tak. Po uzyskaniu zgody Essity klient ma możliwość podpisania umowy na krótszy okres,
+            na przykład 24 miesiące. Warunki takiej umowy, w tym wysokość opłat, ustalane są
+            indywidualnie.
           </div>
         </article>
 
         <article class="faq-item" data-faq-cat="warunki">
           <div class="faq-question">
             <div class="faq-question-text">
-              Ile wynosi gwarancja na wynajmowane dozowniki?
+              W jaki sposób Klient odpowiada za konserwację dozowników?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Przez cały okres trwania umowy dozowniki objęte są pełną gwarancją TBP. W razie
-            awarii lub uszkodzenia zapewniamy naprawę lub wymianę urządzenia.
+            W ramach konserwacji rozumiemy regularne mycie dozowników odpowiednim środkiem, aby
+            zapewnić higienę oraz prawidłowe funkcjonowanie urządzeń. Klient odpowiada także za
+            zgłaszanie ewentualnych usterek.
           </div>
         </article>
 
-        <article class="faq-item" data-faq-cat="realizacja">
+        <article class="faq-item" data-faq-cat="warunki">
           <div class="faq-question">
             <div class="faq-question-text">
-              Co w sytuacji, gdy któryś dozownik uległ uszkodzeniu?
+              Ile wynosi gwarancja na najmowane dozowniki?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Skontaktuj się z nami – doradca TBP zgłosi reklamację i zorganizuje serwis lub wymianę
-            dozownika. Koszty są objęte umową, o ile uszkodzenie nie wynika z rażącego zaniedbania.
+            Gwarancja obowiązuje przez cały okres trwania umowy – od momentu podpisania aż do
+            jej zakończenia, pod warunkiem prawidłowej eksploatacji urządzeń.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Co w sytuacji, gdyby któryś dozownik uległ uszkodzeniu?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Dozowniki objęte są gwarancją. W ciągu 14 dni od zgłoszenia uszkodzony dozownik
+            zostanie naprawiony lub wymieniony na nowy, zgodnie z warunkami programu TBP.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Klient chce zrezygnować z umowy przed upływem 3 lat – jak wygląda procedura wypowiedzenia?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Po otrzymaniu takiej informacji dział Customer Care przygotowuje wypowiedzenie, protokół
+            zwrotu dozowników oraz rozliczenie. Klient odsyła podpisane dokumenty razem z dozownikami.
+            Niewykorzystane opłaty z tytułu najmu oraz ewentualne koszty napraw są rozliczane zgodnie
+            z warunkami umowy.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Klient po wypowiedzeniu umowy nie zwróci wszystkich dozowników – co w takiej sytuacji?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Essity ma prawo obciążyć klienta karą za każdy niezwrócony dozownik. Wysokość opłat
+            określona jest w warunkach programu Tork Business Plus i zależy od rodzaju urządzenia.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy klient ponosi karę za wcześniejsze wypowiedzenie umowy? Jeśli tak, to jaką?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Jeżeli warunki umowy nie zostały naruszone, klient nie ponosi kary umownej za wcześniejsze
+            wypowiedzenie. W przypadku naruszenia zapisów umowy mogą zostać naliczone opłaty
+            zgodnie z regulaminem programu TBP.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Jakie są przykładowe opłaty w przypadku naruszenia warunków umowy?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            W przypadku rażącego naruszenia umowy, na przykład braku zwrotu dozowników, Essity
+            ma prawo naliczyć opłaty zgodnie z cennikiem umownym, m.in.:
+            <br><br>
+            – markowe dozowniki ścienne Tork – opłata jednostkowa,<br>
+            – elektryczne dozowniki do ręczników – opłata za urządzenie,<br>
+            – inne dozowniki Tork – opłaty zgodnie z aktualnym cennikiem.<br><br>
+            Szczegółowe kwoty określone są w obowiązujących warunkach programu.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="warunki">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Co należy zrobić w przypadku, gdy klient po podpisaniu umowy zechce zrezygnować z części dozowników (dozowniki są nowe, nieużywane)?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            W wyjątkowych przypadkach, po uzyskaniu zgody Essity, dozowniki mogą zostać zwrócone
+            do magazynu Essity. Następnie zawierany jest aneks do umowy uwzględniający mniejszą liczbę
+            urządzeń. Proces musi być przeprowadzony zgodnie z procedurą zwrotu opisaną w regulaminie
+            programu TBP.
+          </div>
+        </article>
+
+        <!-- SPOSÓB WYPEŁNIENIA UMOWY TBP (3) -->
+        <article class="faq-item" data-faq-cat="wypelnienie">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Gdzie na umowie wpisać miejsce montażu dozowników?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Adres montażu dozowników należy wpisać w części umowy przeznaczonej na dane
+            lokalizacji końcowej klienta. Jeśli dozowniki będą instalowane w kilku lokalizacjach,
+            wszystkie adresy powinny zostać wyszczególnione w załączniku.
           </div>
         </article>
 
         <article class="faq-item" data-faq-cat="wypelnienie">
           <div class="faq-question">
             <div class="faq-question-text">
-              W jaki sposób klient odpowiada za konserwację dozowników?
+              Jak poprawnie wypełnić umowę w przypadku, kiedy klienta obsługuje firma sprzątająca?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Klient odpowiada za bieżące utrzymanie dozowników w czystości oraz standardowe
-            czynności eksploatacyjne. Naprawy wynikające z wad produktu lub zużycia technicznego
-            realizowane są w ramach TBP.
+            Przy wypełnianiu umowy należy dodać pole z nazwą firmy usługowej. W przypadku, gdy firma
+            sprzątająca jest wykonawcą, zaznaczamy odpowiednią opcję w umowie, a dane kontaktowe
+            osoby odpowiedzialnej za obsługę dozowników wpisujemy w części przeznaczonej na dane
+            osoby kontaktowej.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="wypelnienie">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy jest możliwość zmiany kosztu dzierżawy dozownika na umowie?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Tak, jest możliwość zmiany kosztu dzierżawy w porozumieniu z przedstawicielem Essity.
+            Należy jednak pamiętać, że ceny na fakturze dla dystrybutora pozostają zgodne
+            z aktualnie obowiązującym cennikiem programu TBP.
+          </div>
+        </article>
+
+        <!-- AKCEPTACJA UMOWY (3) -->
+        <article class="faq-item" data-faq-cat="akceptacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Co zrobić w przypadku, gdy klient nie ma możliwości otworzenia umowy na swoim komputerze?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            W większości przypadków problem wynika z braku odpowiedniego oprogramowania
+            do otwierania plików PDF. Zalecamy zainstalowanie aktualnej wersji programu Adobe Acrobat
+            Reader lub innego czytnika PDF. Jeśli problem nadal występuje, klient może poprosić o
+            ponowne wysłanie dokumentu lub kontakt z działem Customer Care.
           </div>
         </article>
 
         <article class="faq-item" data-faq-cat="akceptacja">
           <div class="faq-question">
             <div class="faq-question-text">
-              Jakie są wymagane dane do przygotowania umowy?
+              Klient ma problem z akceptacją umowy – gdzie znajdzie instrukcję zatwierdzenia umowy?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Potrzebne są podstawowe dane firmy: nazwa, NIP, adres siedziby oraz dane kontaktowe
-            osoby odpowiedzialnej za współpracę. W przypadku większych instalacji możemy poprosić
-            o dodatkowe informacje dotyczące lokalizacji dozowników.
+            Instrukcję krok po kroku można znaleźć na platformie Tork Connect lub w wiadomości e-mail
+            wysłanej z linkiem do akceptacji umowy. W razie trudności klient może skontaktować się
+            z działem obsługi, który przeprowadzi go przez proces akceptacji.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="akceptacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Jak długo aktywny jest link wysyłany do klienta?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Link do akceptacji umowy jest aktywny przez około 2 tygodnie. Po upływie tego czasu,
+            jeśli umowa nie została zatwierdzona, konieczne jest ponowne wygenerowanie i wysłanie
+            wiadomości e-mail z nowym linkiem.
+          </div>
+        </article>
+
+        <!-- REALIZACJA UMOWY TBP (2) -->
+        <article class="faq-item" data-faq-cat="realizacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Kiedy umowa musi zostać zatwierdzona przez klienta, żeby została dołączona do najbliższego routingu?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Aby umowa została dołączona do najbliższego routingu, powinna zostać zatwierdzona
+            przez klienta do końca dnia poprzedzającego zamówienie. Dzięki temu dozowniki mogą
+            zostać wysłane i wdrożone zgodnie z planem.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="realizacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Klient mający zawartą umowę TBP zmienił dystrybutora, z którym współpracuje – jak postąpić w takim przypadku?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            W takiej sytuacji należy skontaktować się z działem Customer Care w celu przepisania
+            umowy na nowego dystrybutora lub przygotowania nowej umowy TBP. Szczegółowe zasady
+            zależą od aktualnych warunków współpracy.
+          </div>
+        </article>
+
+        <!-- PROLONGACJA UMOWY TBP (8) -->
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy w ramach przedłużenia umowy mogę wymienić stare dozowniki na nowe?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Tak, przy przedłużeniu umowy naliczanej w programie TBP istnieje możliwość wymiany
+            dozowników na nowe modele zgodnie z aktualną ofertą. Szczegóły uzgadniane są z doradcą
+            w momencie przygotowywania prolongaty.
           </div>
         </article>
 
         <article class="faq-item" data-faq-cat="prolongacja">
           <div class="faq-question">
             <div class="faq-question-text">
-              Co się dzieje po zakończeniu okresu umowy?
+              Czy w związku z przedłużeniem umowy będą pobierane dodatkowe opłaty za najem dozowników?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Przed zakończeniem umowy kontaktujemy się z Tobą, aby zaproponować przedłużenie
-            współpracy, wymianę dozowników na nowsze modele lub zakończenie najmu i demontaż
-            urządzeń.
+            Przedłużenie umowy nie wiąże się z dodatkowymi kosztami za sam fakt prolongaty.
+            Opłata za najem jest pobierana zgodnie z nowymi warunkami umowy, które klient
+            akceptuje przy jej przedłużeniu.
           </div>
         </article>
 
         <article class="faq-item" data-faq-cat="prolongacja">
           <div class="faq-question">
             <div class="faq-question-text">
-              Czy mogę zmienić liczbę dozowników w trakcie trwania umowy?
+              Czy w przypadku rozwiązania umowy w przedłużonym okresie mają zastosowanie kary umowne?
             </div>
             <div class="faq-toggle"></div>
           </div>
           <div class="faq-answer">
-            Tak, istnieje możliwość zwiększenia lub zmniejszenia liczby dozowników po uzgodnieniu
-            z doradcą TBP. Szczegóły zmian zapisujemy w aneksie do umowy.
+            W dowolnym momencie klient ma możliwość wypowiedzenia umowy i nie ponosi z tego
+            tytułu dodatkowych kosztów, o ile przestrzegane są standardowe warunki zwrotu
+            dozowników i rozliczeń.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Co zrobić w sytuacji, kiedy klient nie chce przedłużyć umowy?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Dozowniki muszą zostać zwrócone do Essity zgodnie z procedurą zakończenia umowy.
+            Klient otrzymuje protokół zdawczo-odbiorczy, a po zwrocie urządzeń umowa jest
+            formalnie zamykana.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy istnieje możliwość wykupienia dozowników?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Nie ma możliwości wykupienia dozowników – pozostają one własnością Essity
+            i w przypadku nieprzedłużenia umowy muszą zostać zwrócone.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy w przypadku nieprzedłużenia umowy jest konieczność napisania wypowiedzenia?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Nie ma takiej potrzeby – umowa zakończy się z upływem okresu, na jaki została
+            zawarta. Wystarczy poinformować dystrybutora o decyzji o nieprzedłużaniu umowy,
+            aby ustalić termin demontażu dozowników.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Czy nakładane są kary w przypadku zakupu niewystarczającej ilości wkładów w ciągu roku?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            Klient jest zobowiązany do korzystania z oryginalnych wkładów Tork. Nie są określone
+            minimalne ilości zakupu w rozliczeniu rocznym, dlatego kary z tego tytułu nie są
+            naliczane – ważne jest jednak stosowanie zalecanych produktów.
+          </div>
+        </article>
+
+        <article class="faq-item" data-faq-cat="prolongacja">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              Co w przypadku przekazania lub przejęcia dozowników przez inną firmę?
+            </div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            W takim przypadku należy podpisać odpowiedni dokument przeniesienia praw i obowiązków
+            lub przygotować nową umowę TBP dla nowego użytkownika dozowników. Szczegóły
+            uzgadniane są z działem Customer Care.
           </div>
         </article>
 
