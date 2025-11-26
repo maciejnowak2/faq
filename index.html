@@ -609,52 +609,63 @@
     </div>
   </div>
 
-  <script>
-    (function () {
-      var catButtons = document.querySelectorAll('.faq-cat-btn');
-      var items = document.querySelectorAll('.faq-item');
+ <script>
+  (function () {
+    var catButtons = document.querySelectorAll('.faq-cat-btn');
+    var items = document.querySelectorAll('.faq-item');
 
-      if (!catButtons.length || !items.length) return;
+    if (!catButtons.length || !items.length) return;
 
-      function setCategory(cat) {
-        items.forEach(function (item) {
-          if (cat === 'all') {
-            item.classList.remove('is-hidden');
-          } else {
-            var itemCat = item.getAttribute('data-faq-cat');
-            if (itemCat === cat) {
-              item.classList.remove('is-hidden');
-            } else {
-              item.classList.add('is-hidden');
-            }
+    function setCategory(cat) {
+      items.forEach(function (item) {
+        var itemCat = item.getAttribute('data-faq-cat');
+        var show = (itemCat === cat);
+        item.classList.toggle('is-hidden', !show);
+        // przy zmianie kategorii zamykamy wszystkie pytania
+        item.classList.remove('is-open');
+      });
+    }
+
+    // klik w kategorię
+    catButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var cat = btn.getAttribute('data-faq-cat');
+
+        catButtons.forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+        });
+
+        setCategory(cat);
+      });
+    });
+
+    // Akordeon – tylko jedno pytanie otwarte naraz
+    document.querySelectorAll('.faq-question').forEach(function (q) {
+      q.addEventListener('click', function () {
+        var item = q.closest('.faq-item');
+        if (!item || item.classList.contains('is-hidden')) return;
+
+        // zamknij wszystkie inne otwarte
+        document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+          if (openItem !== item) {
+            openItem.classList.remove('is-open');
           }
         });
-      }
 
-      catButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var cat = btn.getAttribute('data-faq-cat');
-
-          catButtons.forEach(function (b) {
-            b.classList.toggle('is-active', b === btn);
-          });
-
-          setCategory(cat);
-        });
+        // przełącz bieżące
+        item.classList.toggle('is-open');
       });
+    });
 
-      // Akordeon
-      document.querySelectorAll('.faq-question').forEach(function (q) {
-        q.addEventListener('click', function () {
-          var item = q.closest('.faq-item');
-          if (!item) return;
-          item.classList.toggle('is-open');
-        });
-      });
+    // Domyślnie: pierwsza kategoria na liście
+    var firstBtn = catButtons[0];
+    if (firstBtn) {
+      firstBtn.classList.add('is-active');
+      var firstCat = firstBtn.getAttribute('data-faq-cat');
+      setCategory(firstCat);
+    }
+  })();
+</script>
 
-      // Domyślnie: wszystkie kategorie
-      setCategory('all');
-    })();
-  </script>
 </body>
 </html>
